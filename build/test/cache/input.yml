@@ -61,7 +61,12 @@
   :release_preprocess: []
   :placement: :end
   :system: []
-:flags: {}
+:flags:
+  :test:
+    :compile:
+      :*:
+      - "-Wall"
+      - "-pedantic"
 :extension:
   :header: ".h"
   :source: ".c"
