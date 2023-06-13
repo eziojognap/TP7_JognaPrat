@@ -2,13 +2,21 @@
 :source:
   :path: test
   :file: test_reloj.c
-:successes: []
+:successes:
+- :test: test_Start_Up
+  :line: 12
+  :message: ''
+  :unity_test_time: 0
+- :test: test_ajustar_hora
+  :line: 23
+  :message: ''
+  :unity_test_time: 0
 :failures: []
 :ignores: []
 :counts:
-  :total: 0
-  :passed: 0
+  :total: 2
+  :passed: 2
   :failed: 0
   :ignored: 0
 :stdout: []
-:time: 0.0016973250003502471
+:time: 0.0031090810007299297

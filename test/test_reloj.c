@@ -8,8 +8,9 @@
 //         }
 //     }
 // }
-void Test_Start_Up (void){
-    static const uint8_t ESPERADO[] = {0,0,0,0,0,0};
+
+void test_Start_Up(void){
+    static const uint8_t ESPERADO[] = {0,0,0,0,0,0}; // lo que espera recibir
     uint8_t hora[6] = {0xFF};
     
     clock_t reloj;
@@ -19,15 +20,16 @@ void Test_Start_Up (void){
     TEST_ASSERT_EQUAL_UINT8_ARRAY(ESPERADO,hora,6);
 }
 
-// void test_ajustar_hora(void){
-//     static const uint8_t ESPERADO[] = {1,2,3,4,0,0};
-//     uint8_t hora[6];
+void test_ajustar_hora(void){
+    static const uint8_t ESPERADO[] = {1,2,3,4,0,0}; // lo que espera recibir
+    uint8_t hora[6];
     
-//     clock_t reloj = ClockCreate(5);
-//     ClockSetTime(reloj, ESPERADO, 4);
+    clock_t reloj = ClockCreate(5);
+    ClockSetTime(reloj, ESPERADO, 4);
     
-//     TEST_ASSERT_FALSE(ClockGetTime(reloj,hora,6));
-//     TEST_ASSERT_EQUAL_UINT8_ARRAY(ESPERADO,hora,6);
-// }
+    TEST_ASSERT_TRUE(ClockSetTime(reloj, ESPERADO, 4));
+    TEST_ASSERT_TRUE(ClockGetTime(reloj,hora,6));
+    TEST_ASSERT_EQUAL_UINT8_ARRAY(ESPERADO,hora,6);
+}
 
 // void test_increment_
