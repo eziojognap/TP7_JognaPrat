@@ -34,13 +34,15 @@ void ClockNewTick(clock_t clock){
     ClockNewSec(clock);
     ClockTenSec(clock);
     ClockNewMin(clock);
+    ClockTenMin(clock);
+    ClockNewHour(clock);
 }
 
 void ClockNewSec(clock_t clock){
     if (clock->tick == clock->tick_x_sec){
         clock->hora_actual[5]++;    // incremento un segundo
         clock->tick = 0;
-        printf("seg\n");
+        // printf("segundo\n");
     }
 }
 
@@ -48,9 +50,10 @@ void ClockTenSec(clock_t clock){
     if(clock->hora_actual[5] == 10){ // incrementa una decena
         clock->hora_actual[5] = 0;
         clock->hora_actual[4]++;
-        printf("decena\n");
+        // printf("10 seg\n");
     }
 }
+
 
 void ClockNewMin(clock_t clock){
     if(clock->hora_actual[4] == 6){
@@ -58,5 +61,22 @@ void ClockNewMin(clock_t clock){
         clock->hora_actual[5] = 0;
         clock->hora_actual[3]++;
         printf("min\n");
+    }
+}
+
+void ClockTenMin(clock_t clock){
+    if(clock->hora_actual[3] == 10){ // incrementa una decena
+        clock->hora_actual[3] = 0;
+        clock->hora_actual[2]++;
+        printf("decena de min\n\n");
+    }
+}
+
+void ClockNewHour(clock_t clock){
+    if(clock->hora_actual[2] == 6){
+        clock->hora_actual[2] = 0;
+        clock->hora_actual[3] = 0;
+        clock->hora_actual[1]++;
+        printf("hora\n\n");
     }
 }

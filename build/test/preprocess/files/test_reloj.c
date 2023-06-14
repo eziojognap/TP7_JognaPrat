@@ -170,3 +170,67 @@ void test_increment_one_min(void) {
 
 
 }
+
+
+
+void test_increment_ten_min(void) {
+
+    static const uint8_t ESPERADO[] = {0,0,1,0,0,0};
+
+    uint8_t hora[6] = {0,0,0,0,0,0};
+
+
+
+    clock_t reloj = ClockCreate(5);
+
+    ClockSetTime(reloj, hora, 6);
+
+
+
+    SimulateTime(600, reloj);
+
+    ClockGetTime(reloj, hora, 6);
+
+
+
+    UnityAssertEqualIntArray(( const void*)((ESPERADO)), ( const void*)((hora)), (UNITY_UINT32)((6)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(101), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
+
+
+
+}
+
+
+
+void test_increment_one_hour(void) {
+
+    static const uint8_t ESPERADO[] = {0,1,0,0,0,0};
+
+    uint8_t hora[6] = {0,0,0,0,0,0};
+
+
+
+    clock_t reloj = ClockCreate(5);
+
+    ClockSetTime(reloj, hora, 6);
+
+
+
+    SimulateTime(3600, reloj);
+
+    ClockGetTime(reloj, hora, 6);
+
+
+
+    UnityAssertEqualIntArray(( const void*)((ESPERADO)), ( const void*)((hora)), (UNITY_UINT32)((6)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(115), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
+
+
+
+}

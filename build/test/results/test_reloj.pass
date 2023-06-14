@@ -23,91 +23,107 @@
   :line: 77
   :message: ''
   :unity_test_time: 0
+- :test: test_increment_ten_min
+  :line: 91
+  :message: ''
+  :unity_test_time: 0
+- :test: test_increment_one_hour
+  :line: 105
+  :message: ''
+  :unity_test_time: 0
 :failures: []
 :ignores: []
 :counts:
-  :total: 5
-  :passed: 5
+  :total: 7
+  :passed: 7
   :failed: 0
   :ignored: 0
 :stdout:
-- seg
-- seg
-- seg
-- seg
-- seg
-- seg
-- seg
-- seg
-- seg
-- seg
-- seg
-- decena
-- seg
-- seg
-- seg
-- seg
-- seg
-- seg
-- seg
-- seg
-- seg
-- seg
-- decena
-- seg
-- seg
-- seg
-- seg
-- seg
-- seg
-- seg
-- seg
-- seg
-- seg
-- decena
-- seg
-- seg
-- seg
-- seg
-- seg
-- seg
-- seg
-- seg
-- seg
-- seg
-- decena
-- seg
-- seg
-- seg
-- seg
-- seg
-- seg
-- seg
-- seg
-- seg
-- seg
-- decena
-- seg
-- seg
-- seg
-- seg
-- seg
-- seg
-- seg
-- seg
-- seg
-- seg
-- decena
-- seg
-- seg
-- seg
-- seg
-- seg
-- seg
-- seg
-- seg
-- seg
-- seg
-- decena
 - min
-:time: 0.001457244001358049
+- min
+- min
+- min
+- min
+- min
+- min
+- min
+- min
+- min
+- min
+- decena de min
+- ''
+- min
+- min
+- min
+- min
+- min
+- min
+- min
+- min
+- min
+- min
+- decena de min
+- ''
+- min
+- min
+- min
+- min
+- min
+- min
+- min
+- min
+- min
+- min
+- decena de min
+- ''
+- min
+- min
+- min
+- min
+- min
+- min
+- min
+- min
+- min
+- min
+- decena de min
+- ''
+- min
+- min
+- min
+- min
+- min
+- min
+- min
+- min
+- min
+- min
+- decena de min
+- ''
+- min
+- min
+- min
+- min
+- min
+- min
+- min
+- min
+- min
+- min
+- decena de min
+- ''
+- min
+- min
+- min
+- min
+- min
+- min
+- min
+- min
+- min
+- min
+- decena de min
+- ''
+- hora
+- ''
+:time: 0.0016717770013201516

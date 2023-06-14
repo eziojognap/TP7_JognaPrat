@@ -10,6 +10,8 @@ void ClockNewTick(clock_t clock);
 void ClockNewSec(clock_t clock);
 void ClockTenSec(clock_t clock);
 void ClockNewMin(clock_t clock);
+void ClockTenMin(clock_t clock);
+void ClockNewHour(clock_t clock);
 
 
 // void ClockSetUpAlarm(clock_t clock, uint8_t const * const time, uitn_t size);
