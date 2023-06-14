@@ -119,13 +119,13 @@ void test_increment_ten_sec(void) {
 
 
 
-    clock_t reloj = ClockCreate(2);
+    clock_t reloj = ClockCreate(5);
 
     ClockSetTime(reloj, hora, 6);
 
 
 
-    SimulateTime(20, reloj);
+    SimulateTime(10, reloj);
 
     ClockGetTime(reloj, hora, 6);
 
@@ -136,5 +136,37 @@ void test_increment_ten_sec(void) {
    ((void *)0)
 
    ), (UNITY_UINT)(74), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
+
+}
+
+
+
+void test_increment_one_min(void) {
+
+    static const uint8_t ESPERADO[] = {0,0,0,1,0,0};
+
+    uint8_t hora[6] = {0,0,0,0,0,0};
+
+
+
+    clock_t reloj = ClockCreate(5);
+
+    ClockSetTime(reloj, hora, 6);
+
+
+
+    SimulateTime(60, reloj);
+
+    ClockGetTime(reloj, hora, 6);
+
+
+
+    UnityAssertEqualIntArray(( const void*)((ESPERADO)), ( const void*)((hora)), (UNITY_UINT32)((6)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(87), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
+
+
 
 }

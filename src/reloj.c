@@ -1,10 +1,11 @@
 #include "reloj.h"
 #include <string.h>
+#include <stdio.h>
 
 struct clock_s {
     uint8_t hora_actual[6];
     bool valida;
-    uint8_t tick;
+    uint32_t tick;
     uint16_t tick_x_sec;
 
 };
@@ -31,17 +32,31 @@ bool ClockSetTime(clock_t reloj, const  uint8_t * hora, int size){
 void ClockNewTick(clock_t clock){
     clock->tick++;
     ClockNewSec(clock);
+    ClockTenSec(clock);
+    ClockNewMin(clock);
 }
 
 void ClockNewSec(clock_t clock){
     if (clock->tick == clock->tick_x_sec){
-        if(clock->hora_actual[5] == 9){ // incrementa una decena
-            clock->hora_actual[5] = 0;
-            clock->hora_actual[4]++;
-        } else {    
-            clock->hora_actual[5]++;    // incremento un segundo
-            clock->tick = 0;
-        }
+        clock->hora_actual[5]++;    // incremento un segundo
+        clock->tick = 0;
+        printf("seg\n");
     }
+}
 
+void ClockTenSec(clock_t clock){
+    if(clock->hora_actual[5] == 10){ // incrementa una decena
+        clock->hora_actual[5] = 0;
+        clock->hora_actual[4]++;
+        printf("decena\n");
+    }
+}
+
+void ClockNewMin(clock_t clock){
+    if(clock->hora_actual[4] == 6){
+        clock->hora_actual[4] = 0;
+        clock->hora_actual[5] = 0;
+        clock->hora_actual[3]++;
+        printf("min\n");
+    }
 }

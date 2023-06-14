@@ -14,6 +14,7 @@ extern void test_Start_Up(void);
 extern void test_ajustar_hora(void);
 extern void test_increment_one_sec(void);
 extern void test_increment_ten_sec(void);
+extern void test_increment_one_min(void);
 
 
 /*=======Mock Management=====*/
@@ -88,6 +89,7 @@ int main(void)
   run_test(test_ajustar_hora, "test_ajustar_hora", 39);
   run_test(test_increment_one_sec, "test_increment_one_sec", 51);
   run_test(test_increment_ten_sec, "test_increment_ten_sec", 64);
+  run_test(test_increment_one_min, "test_increment_one_min", 77);
 
   return UnityEnd();
 }

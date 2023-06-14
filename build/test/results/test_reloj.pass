@@ -19,12 +19,95 @@
   :line: 64
   :message: ''
   :unity_test_time: 0
+- :test: test_increment_one_min
+  :line: 77
+  :message: ''
+  :unity_test_time: 0
 :failures: []
 :ignores: []
 :counts:
-  :total: 4
-  :passed: 4
+  :total: 5
+  :passed: 5
   :failed: 0
   :ignored: 0
-:stdout: []
-:time: 0.002577873001428088
+:stdout:
+- seg
+- seg
+- seg
+- seg
+- seg
+- seg
+- seg
+- seg
+- seg
+- seg
+- seg
+- decena
+- seg
+- seg
+- seg
+- seg
+- seg
+- seg
+- seg
+- seg
+- seg
+- seg
+- decena
+- seg
+- seg
+- seg
+- seg
+- seg
+- seg
+- seg
+- seg
+- seg
+- seg
+- decena
+- seg
+- seg
+- seg
+- seg
+- seg
+- seg
+- seg
+- seg
+- seg
+- seg
+- decena
+- seg
+- seg
+- seg
+- seg
+- seg
+- seg
+- seg
+- seg
+- seg
+- seg
+- decena
+- seg
+- seg
+- seg
+- seg
+- seg
+- seg
+- seg
+- seg
+- seg
+- seg
+- decena
+- seg
+- seg
+- seg
+- seg
+- seg
+- seg
+- seg
+- seg
+- seg
+- seg
+- decena
+- min
+:time: 0.001457244001358049
