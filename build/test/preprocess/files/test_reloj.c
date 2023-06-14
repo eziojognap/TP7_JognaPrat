@@ -294,3 +294,41 @@ void test_increment_one_day(void) {
    ), (UNITY_UINT)(142), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
 
 }
+
+
+
+void test_ajustar_alarma(void){
+
+    static const uint8_t ESPERADO[] = {1,2,3,4,0,0};
+
+
+
+
+
+    uint8_t alarma[6];
+
+
+
+    clock_t reloj = ClockCreate(5);
+
+    ClockSetTime(reloj, ESPERADO, 4);
+
+
+
+    do {if ((ClockSetUpAlarm(reloj, ESPERADO, 4))) {} else {UnityFail( ((" Expected TRUE Was FALSE")), (UNITY_UINT)((UNITY_UINT)(154)));}} while(0);
+
+    do {if ((ClockGetAlarm(reloj,alarma,6))) {} else {UnityFail( ((" Expected TRUE Was FALSE")), (UNITY_UINT)((UNITY_UINT)(155)));}} while(0);
+
+
+
+    UnityAssertEqualIntArray(( const void*)((ESPERADO)), ( const void*)((alarma)), (UNITY_UINT32)((6)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(157), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
+
+
+
+
+
+}

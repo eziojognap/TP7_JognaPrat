@@ -2,12 +2,17 @@
 #include <string.h>
 #include <stdio.h>
 
+struct alarm_s {
+    uint8_t alarma_actual[6];
+    bool valida;
+};
+
 struct clock_s {
     uint8_t hora_actual[6];
     bool valida;
     uint32_t tick;
     uint16_t tick_x_sec;
-
+    struct alarm_s alarma[1];
 };
 
 clock_t ClockCreate(int tics_por_segundo){ // define la cantidad de ticks por segundo del reloj
@@ -56,7 +61,6 @@ void ClockTenSec(clock_t clock){
     }
 }
 
-
 void ClockNewMin(clock_t clock){
     if(clock->hora_actual[4] == 6){
         clock->hora_actual[4] = 0;
@@ -90,7 +94,6 @@ void ClockTenHour(clock_t clock){
     }
 }
 
-
 void ClockNewDay(clock_t clock){
     if(clock->hora_actual[1] == 4){
         if(clock->hora_actual[0] == 2){
@@ -99,4 +102,15 @@ void ClockNewDay(clock_t clock){
             // clock->dia++;
         }
     }
+}
+
+bool ClockSetUpAlarm(clock_t reloj, const  uint8_t * alarma, int size){
+    memcpy(reloj->alarma->alarma_actual, alarma, size);
+    reloj->alarma->valida = true;
+    return reloj->alarma->valida;
+}
+
+bool ClockGetAlarm(clock_t reloj, uint8_t * hora, int size){
+    memcpy(hora, reloj->alarma->alarma_actual, size);
+    return reloj->alarma->valida;
 }
