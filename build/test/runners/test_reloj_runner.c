@@ -17,6 +17,8 @@ extern void test_increment_ten_sec(void);
 extern void test_increment_one_min(void);
 extern void test_increment_ten_min(void);
 extern void test_increment_one_hour(void);
+extern void test_increment_ten_hour(void);
+extern void test_increment_one_day(void);
 
 
 /*=======Mock Management=====*/
@@ -94,6 +96,8 @@ int main(void)
   run_test(test_increment_one_min, "test_increment_one_min", 77);
   run_test(test_increment_ten_min, "test_increment_ten_min", 91);
   run_test(test_increment_one_hour, "test_increment_one_hour", 105);
+  run_test(test_increment_ten_hour, "test_increment_ten_hour", 119);
+  run_test(test_increment_one_day, "test_increment_one_day", 132);
 
   return UnityEnd();
 }

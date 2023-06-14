@@ -31,99 +31,20 @@
   :line: 105
   :message: ''
   :unity_test_time: 0
+- :test: test_increment_ten_hour
+  :line: 119
+  :message: ''
+  :unity_test_time: 0
+- :test: test_increment_one_day
+  :line: 132
+  :message: ''
+  :unity_test_time: 0
 :failures: []
 :ignores: []
 :counts:
-  :total: 7
-  :passed: 7
+  :total: 9
+  :passed: 9
   :failed: 0
   :ignored: 0
-:stdout:
-- min
-- min
-- min
-- min
-- min
-- min
-- min
-- min
-- min
-- min
-- min
-- decena de min
-- ''
-- min
-- min
-- min
-- min
-- min
-- min
-- min
-- min
-- min
-- min
-- decena de min
-- ''
-- min
-- min
-- min
-- min
-- min
-- min
-- min
-- min
-- min
-- min
-- decena de min
-- ''
-- min
-- min
-- min
-- min
-- min
-- min
-- min
-- min
-- min
-- min
-- decena de min
-- ''
-- min
-- min
-- min
-- min
-- min
-- min
-- min
-- min
-- min
-- min
-- decena de min
-- ''
-- min
-- min
-- min
-- min
-- min
-- min
-- min
-- min
-- min
-- min
-- decena de min
-- ''
-- min
-- min
-- min
-- min
-- min
-- min
-- min
-- min
-- min
-- min
-- decena de min
-- ''
-- hora
-- ''
-:time: 0.0016717770013201516
+:stdout: []
+:time: 0.025121794002188835

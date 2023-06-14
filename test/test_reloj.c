@@ -115,3 +115,29 @@ void test_increment_one_hour(void) {
     TEST_ASSERT_EQUAL_UINT8_ARRAY (ESPERADO, hora, 6);
     // printf("ulitima prueba");
 }
+
+void test_increment_ten_hour(void) {
+    static const uint8_t ESPERADO[] = {1,0,0,0,0,0}; // lo que espera recibir
+    uint8_t hora[6] = {0,0,0,0,0,0}; // inicializa la hora en ese valor
+
+    clock_t reloj = ClockCreate(5);
+    ClockSetTime(reloj, hora, 6);
+
+    SimulateTime(36000, reloj); // simula 60 segundos
+    ClockGetTime(reloj, hora, 6); // consulto la hora para ver si incremento en el reloj
+
+    TEST_ASSERT_EQUAL_UINT8_ARRAY (ESPERADO, hora, 6);
+ }
+
+void test_increment_one_day(void) {
+    static const uint8_t ESPERADO[] = {0,0,0,0,0,0}; // lo que espera recibir
+    uint8_t hora[6] = {0,0,0,0,0,0}; // inicializa la hora en ese valor
+
+    clock_t reloj = ClockCreate(5);
+    ClockSetTime(reloj, hora, 6);
+
+    SimulateTime(86400, reloj); // simula un dia
+    ClockGetTime(reloj, hora, 6); // consulto la hora para ver si incremento en el reloj
+
+    TEST_ASSERT_EQUAL_UINT8_ARRAY (ESPERADO, hora, 6);
+}
