@@ -4,7 +4,10 @@
 typedef struct clock_s * clock_t;
 typedef struct alarm_s * alarm_t;
 
-clock_t ClockCreate(int tics_por_segundo);
+typedef void (*Alarm_activate)(clock_t clock);
+
+clock_t ClockCreate(int tics_por_segundo, Alarm_activate alarma);
+
 bool ClockGetTime(clock_t reloj, uint8_t hora[], int size);
 bool ClockSetTime(clock_t reloj, const uint8_t hora[], int size);
 
@@ -19,4 +22,3 @@ void ClockNewDay(clock_t clock);
 
 bool ClockGetAlarm(clock_t reloj, uint8_t alarma[], int size);
 bool ClockSetUpAlarm(clock_t reloj, const uint8_t alarma[], int size);
-bool ClockControlAlarm(clock_t clock);

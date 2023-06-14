@@ -4,63 +4,59 @@
   :file: test_reloj.c
 :successes:
 - :test: test_Start_Up
-  :line: 28
+  :line: 33
   :message: ''
   :unity_test_time: 0
 - :test: test_ajustar_hora
-  :line: 39
+  :line: 44
   :message: ''
   :unity_test_time: 0
 - :test: test_increment_one_sec
-  :line: 51
+  :line: 56
   :message: ''
   :unity_test_time: 0
 - :test: test_increment_ten_sec
-  :line: 64
+  :line: 69
   :message: ''
   :unity_test_time: 0
 - :test: test_increment_one_min
-  :line: 77
+  :line: 82
   :message: ''
   :unity_test_time: 0
 - :test: test_increment_ten_min
-  :line: 91
+  :line: 96
   :message: ''
   :unity_test_time: 0
 - :test: test_increment_one_hour
-  :line: 105
+  :line: 110
   :message: ''
   :unity_test_time: 0
 - :test: test_increment_ten_hour
-  :line: 119
+  :line: 124
   :message: ''
   :unity_test_time: 0
 - :test: test_increment_one_day
-  :line: 132
+  :line: 137
   :message: ''
   :unity_test_time: 0
 - :test: test_ajustar_alarma
-  :line: 145
+  :line: 150
   :message: ''
   :unity_test_time: 0
 - :test: test_control_alarma
-  :line: 160
-  :message: ''
-  :unity_test_time: 0
-- :test: test_alarma_on
-  :line: 182
+  :line: 165
   :message: ''
   :unity_test_time: 0
 - :test: test_alarma_off
-  :line: 203
+  :line: 207
   :message: ''
   :unity_test_time: 0
 :failures: []
 :ignores: []
 :counts:
-  :total: 13
-  :passed: 13
+  :total: 12
+  :passed: 12
   :failed: 0
   :ignored: 0
 :stdout: []
-:time: 0.021838141001353506
+:time: 0.03902096800447907

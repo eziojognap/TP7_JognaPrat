@@ -21,7 +21,6 @@ extern void test_increment_ten_hour(void);
 extern void test_increment_one_day(void);
 extern void test_ajustar_alarma(void);
 extern void test_control_alarma(void);
-extern void test_alarma_on(void);
 extern void test_alarma_off(void);
 
 
@@ -93,19 +92,18 @@ static void run_test(UnityTestFunction func, const char* name, UNITY_LINE_TYPE l
 int main(void)
 {
   UnityBegin("test_reloj.c");
-  run_test(test_Start_Up, "test_Start_Up", 28);
-  run_test(test_ajustar_hora, "test_ajustar_hora", 39);
-  run_test(test_increment_one_sec, "test_increment_one_sec", 51);
-  run_test(test_increment_ten_sec, "test_increment_ten_sec", 64);
-  run_test(test_increment_one_min, "test_increment_one_min", 77);
-  run_test(test_increment_ten_min, "test_increment_ten_min", 91);
-  run_test(test_increment_one_hour, "test_increment_one_hour", 105);
-  run_test(test_increment_ten_hour, "test_increment_ten_hour", 119);
-  run_test(test_increment_one_day, "test_increment_one_day", 132);
-  run_test(test_ajustar_alarma, "test_ajustar_alarma", 145);
-  run_test(test_control_alarma, "test_control_alarma", 160);
-  run_test(test_alarma_on, "test_alarma_on", 182);
-  run_test(test_alarma_off, "test_alarma_off", 203);
+  run_test(test_Start_Up, "test_Start_Up", 33);
+  run_test(test_ajustar_hora, "test_ajustar_hora", 44);
+  run_test(test_increment_one_sec, "test_increment_one_sec", 56);
+  run_test(test_increment_ten_sec, "test_increment_ten_sec", 69);
+  run_test(test_increment_one_min, "test_increment_one_min", 82);
+  run_test(test_increment_ten_min, "test_increment_ten_min", 96);
+  run_test(test_increment_one_hour, "test_increment_one_hour", 110);
+  run_test(test_increment_ten_hour, "test_increment_ten_hour", 124);
+  run_test(test_increment_one_day, "test_increment_one_day", 137);
+  run_test(test_ajustar_alarma, "test_ajustar_alarma", 150);
+  run_test(test_control_alarma, "test_control_alarma", 165);
+  run_test(test_alarma_off, "test_alarma_off", 207);
 
   return UnityEnd();
 }

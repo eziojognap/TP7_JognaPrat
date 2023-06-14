@@ -27,6 +27,26 @@ void SimulateTime(uint32_t seconds, clock_t reloj){
 
 
 
+    static 
+
+          _Bool 
+
+               luz;
+
+
+
+void SimulateAlarmActivated(clock_t reloj){
+
+    luz = 
+
+         1
+
+             ;
+
+}
+
+
+
 void test_Start_Up(void){
 
     static const uint8_t ESPERADO[] = {0,0,0,0,0,0};
@@ -37,17 +57,17 @@ void test_Start_Up(void){
 
     clock_t reloj;
 
-    reloj = ClockCreate(5);
+    reloj = ClockCreate(5,SimulateAlarmActivated);
 
 
 
-    do {if (!(ClockGetTime(reloj,hora,6))) {} else {UnityFail( ((" Expected FALSE Was TRUE")), (UNITY_UINT)((UNITY_UINT)(35)));}} while(0);
+    do {if (!(ClockGetTime(reloj,hora,6))) {} else {UnityFail( ((" Expected FALSE Was TRUE")), (UNITY_UINT)((UNITY_UINT)(40)));}} while(0);
 
     UnityAssertEqualIntArray(( const void*)((ESPERADO)), ( const void*)((hora)), (UNITY_UINT32)((6)), (
 
    ((void *)0)
 
-   ), (UNITY_UINT)(36), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
+   ), (UNITY_UINT)(41), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
 
 }
 
@@ -61,21 +81,21 @@ void test_ajustar_hora(void){
 
 
 
-    clock_t reloj = ClockCreate(5);
+    clock_t reloj = ClockCreate(5,SimulateAlarmActivated);
 
     ClockSetTime(reloj, ESPERADO, 4);
 
 
 
-    do {if ((ClockSetTime(reloj, ESPERADO, 4))) {} else {UnityFail( ((" Expected TRUE Was FALSE")), (UNITY_UINT)((UNITY_UINT)(46)));}} while(0);
+    do {if ((ClockSetTime(reloj, ESPERADO, 4))) {} else {UnityFail( ((" Expected TRUE Was FALSE")), (UNITY_UINT)((UNITY_UINT)(51)));}} while(0);
 
-    do {if ((ClockGetTime(reloj,hora,6))) {} else {UnityFail( ((" Expected TRUE Was FALSE")), (UNITY_UINT)((UNITY_UINT)(47)));}} while(0);
+    do {if ((ClockGetTime(reloj,hora,6))) {} else {UnityFail( ((" Expected TRUE Was FALSE")), (UNITY_UINT)((UNITY_UINT)(52)));}} while(0);
 
     UnityAssertEqualIntArray(( const void*)((ESPERADO)), ( const void*)((hora)), (UNITY_UINT32)((6)), (
 
    ((void *)0)
 
-   ), (UNITY_UINT)(48), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
+   ), (UNITY_UINT)(53), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
 
 }
 
@@ -89,7 +109,7 @@ void test_increment_one_sec(void) {
 
 
 
-    clock_t reloj = ClockCreate(5);
+    clock_t reloj = ClockCreate(5,SimulateAlarmActivated);
 
     ClockSetTime(reloj, hora, 6);
 
@@ -105,7 +125,7 @@ void test_increment_one_sec(void) {
 
    ((void *)0)
 
-   ), (UNITY_UINT)(61), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
+   ), (UNITY_UINT)(66), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
 
 }
 
@@ -119,7 +139,7 @@ void test_increment_ten_sec(void) {
 
 
 
-    clock_t reloj = ClockCreate(5);
+    clock_t reloj = ClockCreate(5,SimulateAlarmActivated);
 
     ClockSetTime(reloj, hora, 6);
 
@@ -135,7 +155,7 @@ void test_increment_ten_sec(void) {
 
    ((void *)0)
 
-   ), (UNITY_UINT)(74), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
+   ), (UNITY_UINT)(79), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
 
 }
 
@@ -149,7 +169,7 @@ void test_increment_one_min(void) {
 
 
 
-    clock_t reloj = ClockCreate(5);
+    clock_t reloj = ClockCreate(5,SimulateAlarmActivated);
 
     ClockSetTime(reloj, hora, 6);
 
@@ -165,7 +185,7 @@ void test_increment_one_min(void) {
 
    ((void *)0)
 
-   ), (UNITY_UINT)(87), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
+   ), (UNITY_UINT)(92), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
 
 
 
@@ -181,7 +201,7 @@ void test_increment_ten_min(void) {
 
 
 
-    clock_t reloj = ClockCreate(5);
+    clock_t reloj = ClockCreate(5,SimulateAlarmActivated);
 
     ClockSetTime(reloj, hora, 6);
 
@@ -197,7 +217,7 @@ void test_increment_ten_min(void) {
 
    ((void *)0)
 
-   ), (UNITY_UINT)(101), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
+   ), (UNITY_UINT)(106), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
 
 
 
@@ -213,7 +233,7 @@ void test_increment_one_hour(void) {
 
 
 
-    clock_t reloj = ClockCreate(5);
+    clock_t reloj = ClockCreate(5,SimulateAlarmActivated);
 
     ClockSetTime(reloj, hora, 6);
 
@@ -229,7 +249,7 @@ void test_increment_one_hour(void) {
 
    ((void *)0)
 
-   ), (UNITY_UINT)(115), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
+   ), (UNITY_UINT)(120), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
 
 
 
@@ -245,7 +265,7 @@ void test_increment_ten_hour(void) {
 
 
 
-    clock_t reloj = ClockCreate(5);
+    clock_t reloj = ClockCreate(5,SimulateAlarmActivated);
 
     ClockSetTime(reloj, hora, 6);
 
@@ -261,7 +281,7 @@ void test_increment_ten_hour(void) {
 
    ((void *)0)
 
-   ), (UNITY_UINT)(129), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
+   ), (UNITY_UINT)(134), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
 
  }
 
@@ -275,7 +295,7 @@ void test_increment_one_day(void) {
 
 
 
-    clock_t reloj = ClockCreate(5);
+    clock_t reloj = ClockCreate(5,SimulateAlarmActivated);
 
     ClockSetTime(reloj, hora, 6);
 
@@ -291,7 +311,7 @@ void test_increment_one_day(void) {
 
    ((void *)0)
 
-   ), (UNITY_UINT)(142), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
+   ), (UNITY_UINT)(147), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
 
 }
 
@@ -307,15 +327,15 @@ void test_ajustar_alarma(void){
 
 
 
-    clock_t reloj = ClockCreate(5);
+    clock_t reloj = ClockCreate(5,SimulateAlarmActivated);
 
     ClockSetTime(reloj, ESPERADO, 4);
 
 
 
-    do {if ((ClockSetUpAlarm(reloj, ESPERADO, 4))) {} else {UnityFail( ((" Expected TRUE Was FALSE")), (UNITY_UINT)((UNITY_UINT)(153)));}} while(0);
+    do {if ((ClockSetUpAlarm(reloj, ESPERADO, 4))) {} else {UnityFail( ((" Expected TRUE Was FALSE")), (UNITY_UINT)((UNITY_UINT)(158)));}} while(0);
 
-    do {if ((ClockGetAlarm(reloj,alarma,6))) {} else {UnityFail( ((" Expected TRUE Was FALSE")), (UNITY_UINT)((UNITY_UINT)(154)));}} while(0);
+    do {if ((ClockGetAlarm(reloj,alarma,6))) {} else {UnityFail( ((" Expected TRUE Was FALSE")), (UNITY_UINT)((UNITY_UINT)(159)));}} while(0);
 
 
 
@@ -323,7 +343,7 @@ void test_ajustar_alarma(void){
 
    ((void *)0)
 
-   ), (UNITY_UINT)(156), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
+   ), (UNITY_UINT)(161), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
 
 }
 
@@ -345,7 +365,7 @@ void test_control_alarma(void){
 
 
 
-    clock_t reloj = ClockCreate(5);
+    clock_t reloj = ClockCreate(5,SimulateAlarmActivated);
 
     ClockSetTime(reloj, ESPERADO, 4);
 
@@ -367,59 +387,13 @@ void test_control_alarma(void){
 
    ((void *)0)
 
-   ), (UNITY_UINT)(176), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
+   ), (UNITY_UINT)(181), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
 
 
 
-    do {if ((ClockControlAlarm(reloj))) {} else {UnityFail( ((" Expected TRUE Was FALSE")), (UNITY_UINT)((UNITY_UINT)(178)));}} while(0);
-
-
+    do {if ((luz)) {} else {UnityFail( ((" Expected TRUE Was FALSE")), (UNITY_UINT)((UNITY_UINT)(183)));}} while(0);
 
 }
-
-
-
-void test_alarma_on(void){
-
-    static const uint8_t ESPERADO[] = {1,2,3,4,0,0};
-
-    static const uint8_t A_ESPERADA[] = {1,2,3,5,0,0};
-
-
-
-    uint8_t alarma[6];
-
-    uint8_t hora[6];
-
-
-
-    clock_t reloj = ClockCreate(5);
-
-    ClockSetTime(reloj, ESPERADO, 4);
-
-
-
-    ClockSetUpAlarm(reloj, A_ESPERADA, 4);
-
-    ClockGetAlarm(reloj,alarma,6);
-
-
-
-    SimulateTime(60, reloj);
-
-    ClockGetTime(reloj, hora, 6);
-
-
-
-    reloj->alarma->activada = ClockControlAlarm(reloj);
-
-
-
-    do {if ((reloj->alarma->activada)) {} else {UnityFail( ((" Expected TRUE Was FALSE")), (UNITY_UINT)((UNITY_UINT)(200)));}} while(0);
-
-}
-
-
 
 void test_alarma_off(void){
 
@@ -435,7 +409,7 @@ void test_alarma_off(void){
 
 
 
-    clock_t reloj = ClockCreate(5);
+    clock_t reloj = ClockCreate(5,SimulateAlarmActivated);
 
     ClockSetTime(reloj, ESPERADO, 4);
 
@@ -453,7 +427,7 @@ void test_alarma_off(void){
 
 
 
-    do {if ((ClockControlAlarm(reloj))) {} else {UnityFail( ((" Expected TRUE Was FALSE")), (UNITY_UINT)((UNITY_UINT)(219)));}} while(0);
+    do {if ((luz)) {} else {UnityFail( ((" Expected TRUE Was FALSE")), (UNITY_UINT)((UNITY_UINT)(223)));}} while(0);
 
 
 
@@ -463,8 +437,6 @@ void test_alarma_off(void){
 
 
 
-    do {if ((ClockControlAlarm(reloj))) {} else {UnityFail( ((" Expected TRUE Was FALSE")), (UNITY_UINT)((UNITY_UINT)(224)));}} while(0);
-
-
+    do {if ((luz)) {} else {UnityFail( ((" Expected TRUE Was FALSE")), (UNITY_UINT)((UNITY_UINT)(228)));}} while(0);
 
 }

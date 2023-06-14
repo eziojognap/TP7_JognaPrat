@@ -2,10 +2,13 @@
 #include <string.h>
 #include <stdio.h>
 
+void ClockControlAlarm(clock_t clock);
+
 struct alarm_s {
     uint8_t alarma_actual[6];
     bool valida;
     bool activada;
+    Alarm_activate activar_alarma_f;
 };
 
 struct clock_s {
@@ -16,11 +19,14 @@ struct clock_s {
     struct alarm_s alarma[1];
 };
 
-clock_t ClockCreate(int tics_por_segundo){ // define la cantidad de ticks por segundo del reloj
+clock_t ClockCreate(int tics_por_segundo, Alarm_activate alarma){ // define la cantidad de ticks por segundo del reloj
     static struct clock_s self[1];
     memset(self, 0, sizeof(self));
 
     self->tick_x_sec = tics_por_segundo;
+
+    self->alarma->activar_alarma_f = alarma;
+
     return self;
 }
 
@@ -68,6 +74,7 @@ void ClockNewMin(clock_t clock){
         clock->hora_actual[5] = 0;
         clock->hora_actual[3]++;
         // printf("min\n\n");
+        ClockControlAlarm(clock);
     }
 }
 
@@ -116,11 +123,8 @@ bool ClockGetAlarm(clock_t reloj, uint8_t * hora, int size){
     return reloj->alarma->valida;
 }
 
-bool ClockControlAlarm(clock_t clock){
-    if(clock->hora_actual == clock->alarma->alarma_actual){
-        reloj->alarma->activada = true;
-    } else {
-        reloj->alarma->activada = false;
+void ClockControlAlarm(clock_t clock){
+    if(memcmp(clock->hora_actual, clock->alarma->alarma_actual, sizeof(clock->hora_actual)) == 0){
+        clock->alarma->activar_alarma_f (clock);
     }
-    return reloj->alarma->activada;
 }
