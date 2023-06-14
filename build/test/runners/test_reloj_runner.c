@@ -12,6 +12,8 @@ extern void setUp(void);
 extern void tearDown(void);
 extern void test_Start_Up(void);
 extern void test_ajustar_hora(void);
+extern void test_increment_one_sec(void);
+extern void test_increment_ten_sec(void);
 
 
 /*=======Mock Management=====*/
@@ -82,8 +84,10 @@ static void run_test(UnityTestFunction func, const char* name, UNITY_LINE_TYPE l
 int main(void)
 {
   UnityBegin("test_reloj.c");
-  run_test(test_Start_Up, "test_Start_Up", 12);
-  run_test(test_ajustar_hora, "test_ajustar_hora", 23);
+  run_test(test_Start_Up, "test_Start_Up", 28);
+  run_test(test_ajustar_hora, "test_ajustar_hora", 39);
+  run_test(test_increment_one_sec, "test_increment_one_sec", 51);
+  run_test(test_increment_ten_sec, "test_increment_ten_sec", 64);
 
   return UnityEnd();
 }

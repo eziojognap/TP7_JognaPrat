@@ -4,19 +4,27 @@
   :file: test_reloj.c
 :successes:
 - :test: test_Start_Up
-  :line: 12
+  :line: 28
   :message: ''
   :unity_test_time: 0
 - :test: test_ajustar_hora
-  :line: 23
+  :line: 39
+  :message: ''
+  :unity_test_time: 0
+- :test: test_increment_one_sec
+  :line: 51
+  :message: ''
+  :unity_test_time: 0
+- :test: test_increment_ten_sec
+  :line: 64
   :message: ''
   :unity_test_time: 0
 :failures: []
 :ignores: []
 :counts:
-  :total: 2
-  :passed: 2
+  :total: 4
+  :passed: 4
   :failed: 0
   :ignored: 0
 :stdout: []
-:time: 0.001293036000788561
+:time: 0.002577873001428088
