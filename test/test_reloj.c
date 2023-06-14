@@ -156,25 +156,71 @@ void test_ajustar_alarma(void){
     TEST_ASSERT_EQUAL_UINT8_ARRAY(ESPERADO,alarma,6);
 }
 
-// Fijar la alarma y avanzar el reloj para que suene.
-// void test_sonar_alarma(void){
-//     static const uint8_t ESPERADO[] = {1,2,3,4,0,0}; // lo que espera recibir
-//     static const uint8_t A_ESPERADA[] = {1,2,3,5,0,0}; // lo que espera recibir
+// Fijar la alarma y avanzar el reloj para que la funcion de control cambie de estado
+void test_control_alarma(void){
+    static const uint8_t ESPERADO[] = {1,2,3,4,0,0}; // lo que espera recibir
+    static const uint8_t A_ESPERADA[] = {1,2,3,5,0,0}; // lo que espera recibir
     
-//     uint8_t alarma[6];
-//     uint8_t hora[6];
+    uint8_t alarma[6];
+    uint8_t hora[6];
     
-//     clock_t reloj = ClockCreate(5);
-//     ClockSetTime(reloj, ESPERADO, 4);
+    clock_t reloj = ClockCreate(5);
+    ClockSetTime(reloj, ESPERADO, 4);
     
-//     ClockSetUpAlarm(reloj, A_ESPERADA, 4);
-//     ClockGetAlarm(reloj,alarma,6);
+    ClockSetUpAlarm(reloj, A_ESPERADA, 4);
+    ClockGetAlarm(reloj,alarma,6);
     
-//     SimulateTime(60, reloj); // simula un segundo
-//     ClockGetTime(reloj, hora, 6); // consulto la hora para ver si incremento en el reloj
+    SimulateTime(60, reloj); // simula un min
+    ClockGetTime(reloj, hora, 6); // consulto la hora para ver si incremento en el reloj
     
-//     TEST_ASSERT_EQUAL_UINT8_ARRAY(ESPERADO,hora,6);
-//     TEST_ASSERT_EQUAL_UINT8_ARRAY(A_ESPERADA,alarma,6);
+    TEST_ASSERT_EQUAL_UINT8_ARRAY(A_ESPERADA,alarma,6);
 
+    TEST_ASSERT_TRUE(ClockControlAlarm(reloj));
 
-// }
+}
+
+void test_alarma_on(void){
+    static const uint8_t ESPERADO[] = {1,2,3,4,0,0}; // lo que espera recibir
+    static const uint8_t A_ESPERADA[] = {1,2,3,5,0,0}; // lo que espera recibir
+    
+    uint8_t alarma[6];
+    uint8_t hora[6];
+    
+    clock_t reloj = ClockCreate(5);
+    ClockSetTime(reloj, ESPERADO, 4);
+    
+    ClockSetUpAlarm(reloj, A_ESPERADA, 4);
+    ClockGetAlarm(reloj,alarma,6);
+    
+    SimulateTime(60, reloj); // simula un min
+    ClockGetTime(reloj, hora, 6); // consulto la hora para ver si incremento en el reloj
+    
+    reloj->alarma->activada = ClockControlAlarm(reloj);
+
+    TEST_ASSERT_TRUE(reloj->alarma->activada);
+}
+
+void test_alarma_off(void){
+    static const uint8_t ESPERADO[] = {1,2,3,4,0,0}; // lo que espera recibir
+    static const uint8_t A_ESPERADA[] = {1,2,3,5,0,0}; // lo que espera recibir
+    
+    uint8_t alarma[6];
+    uint8_t hora[6];
+    
+    clock_t reloj = ClockCreate(5);
+    ClockSetTime(reloj, ESPERADO, 4);
+    
+    ClockSetUpAlarm(reloj, A_ESPERADA, 4);
+    ClockGetAlarm(reloj,alarma,6);
+    
+    SimulateTime(60, reloj); // simula un min
+    ClockGetTime(reloj, hora, 6); // consulto la hora para ver si incremento en el reloj
+    
+    TEST_ASSERT_TRUE(ClockControlAlarm(reloj));
+
+    SimulateTime(60, reloj); // simula un min
+    ClockGetTime(reloj, hora, 6); // consulto la hora para ver si incremento en el reloj
+
+    TEST_ASSERT_TRUE(ClockControlAlarm(reloj));
+}
+

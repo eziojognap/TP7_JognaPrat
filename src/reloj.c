@@ -5,6 +5,7 @@
 struct alarm_s {
     uint8_t alarma_actual[6];
     bool valida;
+    bool activada;
 };
 
 struct clock_s {
@@ -113,4 +114,13 @@ bool ClockSetUpAlarm(clock_t reloj, const  uint8_t * alarma, int size){
 bool ClockGetAlarm(clock_t reloj, uint8_t * hora, int size){
     memcpy(hora, reloj->alarma->alarma_actual, size);
     return reloj->alarma->valida;
+}
+
+bool ClockControlAlarm(clock_t clock){
+    if(clock->hora_actual == clock->alarma->alarma_actual){
+        reloj->alarma->activada = true;
+    } else {
+        reloj->alarma->activada = false;
+    }
+    return reloj->alarma->activada;
 }

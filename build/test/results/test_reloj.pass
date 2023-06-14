@@ -43,12 +43,24 @@
   :line: 145
   :message: ''
   :unity_test_time: 0
+- :test: test_control_alarma
+  :line: 160
+  :message: ''
+  :unity_test_time: 0
+- :test: test_alarma_on
+  :line: 182
+  :message: ''
+  :unity_test_time: 0
+- :test: test_alarma_off
+  :line: 203
+  :message: ''
+  :unity_test_time: 0
 :failures: []
 :ignores: []
 :counts:
-  :total: 10
-  :passed: 10
+  :total: 13
+  :passed: 13
   :failed: 0
   :ignored: 0
 :stdout: []
-:time: 0.0211685780013795
+:time: 0.021838141001353506

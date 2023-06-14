@@ -19,5 +19,4 @@ void ClockNewDay(clock_t clock);
 
 bool ClockGetAlarm(clock_t reloj, uint8_t alarma[], int size);
 bool ClockSetUpAlarm(clock_t reloj, const uint8_t alarma[], int size);
-
-// bool ClockToggleAlarm(clock_t clock);
+bool ClockControlAlarm(clock_t clock);
