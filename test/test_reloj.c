@@ -175,6 +175,8 @@ void test_control_alarma(void){
     ClockSetUpAlarm(reloj, A_ESPERADA, 4);
     ClockGetAlarm(reloj,alarma,6);
     
+    reloj->alarma->activada = true; // habilito la alarma
+
     SimulateTime(60, reloj); // simula un min
     ClockGetTime(reloj, hora, 6); // consulto la hora para ver si incremento en el reloj
     
@@ -216,7 +218,9 @@ void test_alarma_off(void){
     
     ClockSetUpAlarm(reloj, A_ESPERADA, 4);
     ClockGetAlarm(reloj,alarma,6);
-    
+
+    reloj->alarma->activada = true; // habilito la alarma
+
     SimulateTime(60, reloj); // simula un min
     ClockGetTime(reloj, hora, 6); // consulto la hora para ver si incremento en el reloj
     
@@ -225,6 +229,8 @@ void test_alarma_off(void){
     SimulateTime(60, reloj); // simula un min
     ClockGetTime(reloj, hora, 6); // consulto la hora para ver si incremento en el reloj
 
-    TEST_ASSERT_TRUE(luz);
+    luz = false; // para apagar la alarma desde la tecla cancelar.
+
+    TEST_ASSERT_FALSE(luz);
 }
 

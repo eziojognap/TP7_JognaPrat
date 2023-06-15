@@ -124,7 +124,9 @@ bool ClockGetAlarm(clock_t reloj, uint8_t * hora, int size){
 }
 
 void ClockControlAlarm(clock_t clock){
-    if(memcmp(clock->hora_actual, clock->alarma->alarma_actual, sizeof(clock->hora_actual)) == 0){
-        clock->alarma->activar_alarma_f (clock);
+    if(clock->alarma->activada == true){    // si esta habilitada la alarma
+        if(memcmp(clock->hora_actual, clock->alarma->alarma_actual, sizeof(clock->hora_actual)) == 0){
+            clock->alarma->activar_alarma_f (clock);
+        }
     }
 }

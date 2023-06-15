@@ -103,7 +103,7 @@ int main(void)
   run_test(test_increment_one_day, "test_increment_one_day", 137);
   run_test(test_ajustar_alarma, "test_ajustar_alarma", 150);
   run_test(test_control_alarma, "test_control_alarma", 165);
-  run_test(test_alarma_off, "test_alarma_off", 207);
+  run_test(test_alarma_off, "test_alarma_off", 209);
 
   return UnityEnd();
 }
