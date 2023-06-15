@@ -403,6 +403,8 @@ void test_control_alarma(void){
 
 }
 
+
+
 void test_alarma_off(void){
 
     static const uint8_t ESPERADO[] = {1,2,3,4,0,0};
@@ -443,7 +445,7 @@ void test_alarma_off(void){
 
 
 
-    do {if ((luz)) {} else {UnityFail( ((" Expected TRUE Was FALSE")), (UNITY_UINT)((UNITY_UINT)(227)));}} while(0);
+    do {if ((luz)) {} else {UnityFail( ((" Expected TRUE Was FALSE")), (UNITY_UINT)((UNITY_UINT)(206)));}} while(0);
 
 
 
@@ -461,6 +463,126 @@ void test_alarma_off(void){
 
 
 
-    do {if (!(luz)) {} else {UnityFail( ((" Expected FALSE Was TRUE")), (UNITY_UINT)((UNITY_UINT)(234)));}} while(0);
+    do {if (!(luz)) {} else {UnityFail( ((" Expected FALSE Was TRUE")), (UNITY_UINT)((UNITY_UINT)(213)));}} while(0);
+
+}
+
+
+
+void test_alarma_desactivada(void){
+
+    static const uint8_t ESPERADO[] = {1,2,3,4,0,0};
+
+    static const uint8_t A_ESPERADA[] = {1,2,3,5,0,0};
+
+
+
+    uint8_t alarma[6];
+
+    uint8_t hora[6];
+
+
+
+    clock_t reloj = ClockCreate(5,SimulateAlarmActivated);
+
+    ClockSetTime(reloj, ESPERADO, 4);
+
+
+
+    ClockSetUpAlarm(reloj, A_ESPERADA, 4);
+
+    ClockGetAlarm(reloj,alarma,6);
+
+
+
+    reloj->alarma->activada = 
+
+                             0
+
+                                  ;
+
+
+
+    SimulateTime(60, reloj);
+
+    ClockGetTime(reloj, hora, 6);
+
+
+
+    UnityAssertEqualIntArray(( const void*)((A_ESPERADA)), ( const void*)((alarma)), (UNITY_UINT32)((6)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(234), UNITY_DISPLAY_STYLE_UINT8, UNITY_ARRAY_TO_ARRAY);
+
+
+
+    do {if (!(luz)) {} else {UnityFail( ((" Expected FALSE Was TRUE")), (UNITY_UINT)((UNITY_UINT)(236)));}} while(0);
+
+}
+
+
+
+void test_snooze_alarm(void){
+
+    static const uint8_t ESPERADO[] = {1,2,3,4,0,0};
+
+    static const uint8_t A_ESPERADA[] = {1,2,3,5,0,0};
+
+
+
+    uint8_t alarma[6];
+
+    uint8_t hora[6];
+
+
+
+    clock_t reloj = ClockCreate(5,SimulateAlarmActivated);
+
+    ClockSetTime(reloj, ESPERADO, 4);
+
+
+
+    ClockSetUpAlarm(reloj, A_ESPERADA, 4);
+
+    ClockGetAlarm(reloj,alarma,6);
+
+
+
+    reloj->alarma->activada = 
+
+                             1
+
+                                 ;
+
+
+
+    SimulateTime(60, reloj);
+
+    ClockGetTime(reloj, hora, 6);
+
+
+
+    do {if ((luz)) {} else {UnityFail( ((" Expected TRUE Was FALSE")), (UNITY_UINT)((UNITY_UINT)(257)));}} while(0);
+
+
+
+    ClockActivateSnoozeAlarm(reloj);
+
+    luz = 
+
+         0
+
+              ;
+
+    do {if (!(luz)) {} else {UnityFail( ((" Expected FALSE Was TRUE")), (UNITY_UINT)((UNITY_UINT)(261)));}} while(0);
+
+
+
+    SimulateTime(60*5 , reloj);
+
+
+
+    do {if ((luz)) {} else {UnityFail( ((" Expected TRUE Was FALSE")), (UNITY_UINT)((UNITY_UINT)(265)));}} while(0);
 
 }

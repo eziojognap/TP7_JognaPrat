@@ -48,15 +48,23 @@
   :message: ''
   :unity_test_time: 0
 - :test: test_alarma_off
-  :line: 209
+  :line: 188
+  :message: ''
+  :unity_test_time: 0
+- :test: test_alarma_desactivada
+  :line: 216
+  :message: ''
+  :unity_test_time: 0
+- :test: test_snooze_alarm
+  :line: 239
   :message: ''
   :unity_test_time: 0
 :failures: []
 :ignores: []
 :counts:
-  :total: 12
-  :passed: 12
+  :total: 14
+  :passed: 14
   :failed: 0
   :ignored: 0
 :stdout: []
-:time: 0.03292013800000859
+:time: 0.1025985699998273

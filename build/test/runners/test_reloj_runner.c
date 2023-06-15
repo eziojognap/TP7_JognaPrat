@@ -22,6 +22,8 @@ extern void test_increment_one_day(void);
 extern void test_ajustar_alarma(void);
 extern void test_control_alarma(void);
 extern void test_alarma_off(void);
+extern void test_alarma_desactivada(void);
+extern void test_snooze_alarm(void);
 
 
 /*=======Mock Management=====*/
@@ -103,7 +105,9 @@ int main(void)
   run_test(test_increment_one_day, "test_increment_one_day", 137);
   run_test(test_ajustar_alarma, "test_ajustar_alarma", 150);
   run_test(test_control_alarma, "test_control_alarma", 165);
-  run_test(test_alarma_off, "test_alarma_off", 209);
+  run_test(test_alarma_off, "test_alarma_off", 188);
+  run_test(test_alarma_desactivada, "test_alarma_desactivada", 216);
+  run_test(test_snooze_alarm, "test_snooze_alarm", 239);
 
   return UnityEnd();
 }

@@ -8,6 +8,8 @@ struct alarm_s {
     uint8_t alarma_actual[6];
     bool valida;
     bool activada;
+    int cnt_posponer;
+    bool posponer;
     Alarm_activate activar_alarma_f;
 };
 
@@ -75,6 +77,7 @@ void ClockNewMin(clock_t clock){
         clock->hora_actual[3]++;
         // printf("min\n\n");
         ClockControlAlarm(clock);
+        ClockSnoozeAlarm(clock);
     }
 }
 
@@ -115,6 +118,8 @@ void ClockNewDay(clock_t clock){
 bool ClockSetUpAlarm(clock_t reloj, const  uint8_t * alarma, int size){
     memcpy(reloj->alarma->alarma_actual, alarma, size);
     reloj->alarma->valida = true;
+
+    reloj->alarma->cnt_posponer = 0; // inicializo el contador en 0
     return reloj->alarma->valida;
 }
 
@@ -127,6 +132,24 @@ void ClockControlAlarm(clock_t clock){
     if(clock->alarma->activada == true){    // si esta habilitada la alarma
         if(memcmp(clock->hora_actual, clock->alarma->alarma_actual, sizeof(clock->hora_actual)) == 0){
             clock->alarma->activar_alarma_f (clock);
+        }
+    }
+}
+
+void ClockActivateSnoozeAlarm (clock_t clock){
+    clock->alarma->posponer = true;
+}
+
+void ClockSnoozeAlarm(clock_t clock) {
+    if(clock->alarma->posponer == true){
+        if(clock->alarma->cnt_posponer == (MIN_POSPONER-1)){
+            clock->alarma->cnt_posponer = 0;
+            clock->alarma->posponer = false;
+            clock->alarma->activar_alarma_f (clock);
+            // printf("snooze\n\n");
+        } else {
+            clock->alarma->cnt_posponer++;
+            // printf("dato %p\n", (void*)clock->alarma->cnt_posponer);
         }
     }
 }

@@ -1,6 +1,8 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+#define MIN_POSPONER 5
+
 typedef struct clock_s * clock_t;
 typedef struct alarm_s * alarm_t;
 
@@ -22,3 +24,6 @@ void ClockNewDay(clock_t clock);
 
 bool ClockGetAlarm(clock_t reloj, uint8_t alarma[], int size);
 bool ClockSetUpAlarm(clock_t reloj, const uint8_t alarma[], int size);
+
+void ClockActivateSnoozeAlarm(clock_t clock);
+void ClockSnoozeAlarm(clock_t clock);
